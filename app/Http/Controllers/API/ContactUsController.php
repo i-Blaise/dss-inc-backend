@@ -24,7 +24,9 @@ class ContactUsController extends Controller
             $toAddress = 'menniablaise@gmail.com';
             $toName    = config('mail.from.name');
 
-            Mail::to($toAddress)->queue(new ContactMessage($data));
+            Mail::to($toAddress)
+            ->cc('fsowah001@gmail.com')
+            ->queue(new ContactMessage($data));
 
             return response()->json([
                 'ok' => true,
